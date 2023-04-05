@@ -17,3 +17,24 @@
 	- stampare: "Uno o entrambi i valori inseriti non sono validi"
 */
 
+
+// prompt for distance and passenger age
+const distance = parseFloat(prompt('Inserire i Km da percorrere:'));
+const age = parseInt(prompt('Inserire l\'età del passeggero'));
+
+// calculate whole ticket price and round it to 2 decimals
+let wholePrice = distance * 0.21;
+wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
+
+document.getElementById('distance').innerHTML = distance;
+document.getElementById('age').innerHTML = age;
+document.getElementById('whole-price').innerHTML = wholePrice;
+
+// if () {
+
+// }
+
+
+
+
+
