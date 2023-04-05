@@ -17,46 +17,63 @@
 	- stampare: "Uno o entrambi i valori inseriti non sono validi"
 */
 
+// declare variables for final output
+let message = null;
+let discountedPrice = null;
 
 // prompt for distance and passenger age
 const distance = parseFloat(prompt('Inserire i Km da percorrere:'));
 const age = parseInt(prompt('Inserire l\'età del passeggero'));
 
-// declare variables for final output
-let message;
-let discountedPrice;
+// check values
+document.getElementById('age').innerHTML = age;
+document.getElementById('distance').innerHTML = distance;
 
-// calculate whole ticket price
+// calculate whole price = € 0,21 / Km
 let wholePrice = distance * 0.21;
 
-// check that both distance and age are numbers and greater than zero
-if (!isNaN(distance) > 0 && !isNaN(age) > 0) {
-	// document.getElementById('distance').innerHTML = distance;
-	// document.getElementById('age').innerHTML = age;
-	// document.getElementById('whole-price').innerHTML = wholePrice;
-	if (age < 18) {
-		// 20% discount and round to 2 decimals
-		discountedPrice = wholePrice - (wholePrice * 0.2);
-		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
-
-	} else if (age > 65) {
-		// 40% discount and round to 2 decimals
-		discountedPrice = wholePrice - (wholePrice * 0.4);
-		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
-	}
-} else {
-	message = 'Uno o entrambi i valori inseriti non validi';
+if (isNaN(distance) || isNaN(age)) {
+	message = 'Uno o entrambi i valori inseriti non sono validi!';
 	document.getElementById('message').innerHTML = message;
+} else if (distance <= 0 || age <= 0) {
+	message = 'I dati inseriti devono essere maggiori di zero!';
+	document.getElementById('message').innerHTML = message;
+} else if (age < 18) {
+	// 20% discount and round to 2 decimals
+	discountedPrice = wholePrice - (wholePrice * 0.2);
+	discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
+	wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
+
+	const defPrice1 = `Il prezzo del biglietto è di € ${wholePrice}`;
+	const defPrice2 = `Lo sconto applicato è del 20%`;
+	const defPrice3 = `Il prezzo scontato del biglietto è di € ${discountedPrice}`;
+
+	document.getElementById('def-price1').innerHTML = defPrice1;
+	document.getElementById('def-price2').innerHTML = defPrice2;
+	document.getElementById('def-price3').innerHTML = defPrice3;
+
+} else if (age > 65) {
+	// 40% discount and round to 2 decimals
+	discountedPrice = wholePrice - (wholePrice * 0.4);
+	discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
+	wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
+
+	const defPrice1 = `Il prezzo del biglietto è di € ${wholePrice}`;
+	const defPrice2 = `Lo sconto applicato è del 40%`;
+	const defPrice3 = `Il prezzo scontato del biglietto è di € ${discountedPrice}`;
+
+	document.getElementById('def-price1').innerHTML = defPrice1;
+	document.getElementById('def-price2').innerHTML = defPrice2;
+	document.getElementById('def-price3').innerHTML = defPrice3;
+
+} else {
+	wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
+
+	const defPrice1 = ``;
+	const defPrice2 = `Non si ha diritto a sconti`;
+	const defPrice3 = `Il prezzo del biglietto è di € ${wholePrice}`;
+
+	document.getElementById('def-price1').innerHTML = defPrice1;
+	document.getElementById('def-price2').innerHTML = defPrice2;
+	document.getElementById('def-price3').innerHTML = defPrice3;
 }
-
-
-// display values for check
-wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
-document.getElementById('distance').innerHTML = distance;
-document.getElementById('age').innerHTML = age;
-document.getElementById('whole-price').innerHTML = wholePrice;
-document.getElementById('discounted-price').innerHTML = discountedPrice;
-
-
-
-
