@@ -30,17 +30,17 @@ let wholePrice = distance * 0.21;
 
 // check that both distance and age are numbers and greater than zero
 if (!isNaN(distance) > 0 && !isNaN(age) > 0) {
-	document.getElementById('distance').innerHTML = distance;
-	document.getElementById('age').innerHTML = age;
-	document.getElementById('whole-price').innerHTML = wholePrice;
+	// document.getElementById('distance').innerHTML = distance;
+	// document.getElementById('age').innerHTML = age;
+	// document.getElementById('whole-price').innerHTML = wholePrice;
 	if (age < 18) {
 		// 20% discount and round to 2 decimals
-		discountedPrice = wholePrice * 0.2;
+		discountedPrice = wholePrice - (wholePrice * 0.2);
 		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
 
 	} else if (age > 65) {
 		// 40% discount and round to 2 decimals
-		discountedPrice = wholePrice * 0.4;
+		discountedPrice = wholePrice - (wholePrice * 0.4);
 		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
 	}
 } else {
@@ -50,9 +50,11 @@ if (!isNaN(distance) > 0 && !isNaN(age) > 0) {
 
 
 // display values for check
+wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
 document.getElementById('distance').innerHTML = distance;
 document.getElementById('age').innerHTML = age;
 document.getElementById('whole-price').innerHTML = wholePrice;
+document.getElementById('discounted-price').innerHTML = discountedPrice;
 
 
 
