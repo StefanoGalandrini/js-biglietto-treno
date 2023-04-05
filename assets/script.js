@@ -22,8 +22,9 @@
 const distance = parseFloat(prompt('Inserire i Km da percorrere:'));
 const age = parseInt(prompt('Inserire l\'età del passeggero'));
 
-// declare variable for initial output
+// declare variables for final output
 let message;
+let discountedPrice;
 
 // calculate whole ticket price
 let wholePrice = distance * 0.21;
