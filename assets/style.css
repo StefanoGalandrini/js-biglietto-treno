@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(70, 70, 100);
+	color: white;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+	max-width: 60vw;
+	margin-inline: auto;
+	padding: 5rem 0;
+}
