@@ -22,18 +22,37 @@
 const distance = parseFloat(prompt('Inserire i Km da percorrere:'));
 const age = parseInt(prompt('Inserire l\'età del passeggero'));
 
-// calculate whole ticket price and round it to 2 decimals
-let wholePrice = distance * 0.21;
-wholePrice = Math.round((wholePrice + Number.EPSILON) * 100) / 100;
+// declare variable for initial output
+let message;
 
+// calculate whole ticket price
+let wholePrice = distance * 0.21;
+
+// check that both distance and age are numbers and greater than zero
+if (!isNaN(distance) > 0 && !isNaN(age) > 0) {
+	document.getElementById('distance').innerHTML = distance;
+	document.getElementById('age').innerHTML = age;
+	document.getElementById('whole-price').innerHTML = wholePrice;
+	if (age < 18) {
+		// 20% discount and round to 2 decimals
+		discountedPrice = wholePrice * 0.2;
+		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
+
+	} else if (age > 65) {
+		// 40% discount and round to 2 decimals
+		discountedPrice = wholePrice * 0.4;
+		discountedPrice = Math.round((discountedPrice + Number.EPSILON) * 100) / 100;
+	}
+} else {
+	message = 'Uno o entrambi i valori inseriti non validi';
+	document.getElementById('message').innerHTML = message;
+}
+
+
+// display values for check
 document.getElementById('distance').innerHTML = distance;
 document.getElementById('age').innerHTML = age;
 document.getElementById('whole-price').innerHTML = wholePrice;
-
-// if () {
-
-// }
-
 
 
 
